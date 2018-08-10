@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    AES API
@@ -19,7 +20,9 @@
 #
 ##############################################################################
 
-from openerp import api, fields, models, _
+from openerp import api, fields, models
+import json
+import datetime
 
 
 class activityApi(models.Model):
@@ -30,3 +33,36 @@ class activityApi(models.Model):
         default=False,
         string="Is available for a parent on his portail"
     )
+
+    @api.multi
+    def get_activity_detail(self, data):
+        """
+
+        :param data:
+        :return:
+        """
+        school_id = self.env['extraschool.child'].search([('id', '=', data.get('child_id'))]).schoolimplantation
+        place_id = self.env['extraschool.place'].search([('schoolimplantation_ids', '=', school_id.id)])
+
+        occurrence_ids = self.env['extraschool.activityoccurrence'].search([
+            ('activityid', '=', int(data.get('activity'))),
+            ('date_start', '>=', datetime.strptime(str(data.get('begining_date_search')), '%Y%m%dT%H:%M:%S').strftime("%Y-%m-%d")),
+            ('date_stop', '<=', datetime.strptime(str(data.get('ending_date_search')), '%Y%m%dT%H:%M:%S').strftime("%Y-%m-%d")),
+            ('place_id', '=', place_id.id)
+        ])
+
+        occurence_list = []
+        for occurrence in occurrence_ids:
+            occurence_list.append(
+                {
+                    'id': occurrence.id,
+                    'activity_id': data.get('activity'),
+                    'text': occurrence.occurrence_date,
+                }
+            )
+
+        if occurence_list:
+            print json.dumps({'data': occurence_list}, indent=4)
+            return {'data': occurence_list}
+
+        return None

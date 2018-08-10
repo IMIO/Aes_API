@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
-        <record model="ir.ui.view" id="view_activity_form">
-            <field name="name">extraschool.activity.form.inherit</field>
-            <field name="model">aes_api.activity</field>
-            <field name="inherit_id" ref="extraschool.extraschool_activity_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='selectable_on_registration_multi']" position="after">
-                    <field name="portail_available"/>
-                </xpath>
-            </field>
-        </record>
-    </data>
+    <record model="ir.ui.view" id="view_activity_form">
+        <field name="name">extraschool.activity.form.inherit</field>
+        <field name="model">extraschool.activity</field>
+        <field name="inherit_id" ref="extraschool.extraschool_activity_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='selectable_on_registration_multi']" position="after">
+                <field name="portail_available"/>
+            </xpath>
+        </field>
+    </record>
 </openerp>
