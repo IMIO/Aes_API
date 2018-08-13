@@ -44,7 +44,8 @@ class aesApi(models.Model):
         """
         # Declare new Environment.
         env = api.Environment(cr, uid, context={})
-        return activityApi.get_activity_detail(env['aes_api.activity'], data)
+
+        return activityApi.get_activity_detail(env['extraschool.activity'], data)
 
     @staticmethod
     def is_registered_parent(cr, uid, info, context=None):

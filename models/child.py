@@ -33,7 +33,7 @@ class childApi(models.Model):
         school_ids = self.env['extraschool.child'].search([('id', '=', child_id.get('id'))]).schoolimplantation
         print school_ids
 
-        activities = self.env['extraschool.activity'].search([('portail_available', '=', True)])
+        activities = self.env['extraschool.activity'].search([('portal_available', '=', True)])
 
         activities_list = []
 

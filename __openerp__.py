@@ -1,7 +1,7 @@
 {
     'name': "AES API",
     'version': '0.1',
-    'depends': ['base','extraschool', 'mail'],
+    'depends': ['extraschool'],
     'author': "Imio",
     'website': "https://www.imio.be",
     'category': 'Api',
@@ -17,5 +17,5 @@
 
     ],
     'installable': True,
-    'application': True,
+    'application': False,
 }

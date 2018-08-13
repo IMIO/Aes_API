@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="extraschool.extraschool_activity_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='selectable_on_registration_multi']" position="after">
-                <field name="portail_available"/>
+                <field name="portal_available"/>
             </xpath>
         </field>
     </record>

@@ -22,14 +22,14 @@
 
 from openerp import api, fields, models
 import json
-import datetime
+from datetime import datetime
 
 
 class activityApi(models.Model):
-    _name = "aes_api.activity"
-    _inherit = ['extraschool.activity', 'mail.thread']
+    
+    _inherit = 'extraschool.activity'
 
-    portail_available = fields.Boolean(
+    portal_available = fields.Boolean(
         default=False,
         string="Is available for a parent on his portail"
     )

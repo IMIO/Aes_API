@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from . import activity
 from . import parent
 from . import child
