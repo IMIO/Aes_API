@@ -84,3 +84,15 @@ class aesApi(models.Model):
         env = api.Environment(cr, uid, context={})
 
         return childApi.get_child_activities(env['aes_api.child'], child_id)
+
+    @staticmethod
+    def add_registration_child(cr, uid, data, context=None):
+        """
+        :param cr, uid, context needed for a static method
+        :param smartphone_id: Id of the smartphone that contact us.
+        :return: Dictionnary of children {id: , nom: , prenom:, tagid:}
+        """
+        # Declare new Environment.
+        env = api.Environment(cr, uid, context={})
+
+        return childApi.get_child_activities(env['aes_api.child'], data)

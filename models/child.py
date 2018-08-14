@@ -50,3 +50,8 @@ class childApi(models.Model):
             return {'data': activities_list}
 
         return None
+
+    @api.multi
+    def get_child_activities(self, vals):
+        print(json.dumps(vals, indent=4))
+        return True
